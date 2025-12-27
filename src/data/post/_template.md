@@ -11,8 +11,6 @@ excerpt: ""
 
 category: ""
 
-tags: \[]
-
 author: "QYep"
 
 metadata: {}
