@@ -1,0 +1,53 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('post')).filter((p) => !p.data.draft);
+  const categories = Array.from(new Set(posts.map((p) => (p.data.category || '').trim()).filter(Boolean)));
+
+  return categories.map((category) => ({ params: { category } }));
+}
+
+const { category } = Astro.params;
+
+const slugFrom = (entry) => {
+  const s = entry.slug ?? entry.id ?? '';
+  return s.replace(/\\/g, '/').split('/').pop().replace(/\.(md|mdx)$/i, '');
+};
+
+const posts = (await getCollection('post'))
+  .filter((p) => !p.data.draft)
+  .filter((p) => (p.data.category || '').trim() === category)
+  .sort((a, b) => {
+    const da = a.data.publishDate ? new Date(a.data.publishDate).getTime() : 0;
+    const db = b.data.publishDate ? new Date(b.data.publishDate).getTime() : 0;
+    return db - da;
+  });
+
+const metadata = { title: `Category: ${category}` };
+---
+
+<Layout metadata={metadata}>
+  <main class="mx-auto max-w-6xl px-4 py-12">
+    <a class="underline opacity-80" href="/category">← Categories</a>
+    <h1 class="mt-4 text-3xl font-bold">{category}</h1>
+
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.map((p) => (
+        <a
+          class="rounded-2xl border border-white/30 bg-white/40 p-5 shadow-sm backdrop-blur-xl hover:bg-white/60 dark:border-white/10 dark:bg-slate-900/40 dark:hover:bg-slate-900/60"
+          href={`/blog/${slugFrom(p)}`}
+        >
+          <div class="text-xs opacity-70">
+            {p.data.publishDate ? new Date(p.data.publishDate).toISOString().slice(0, 10) : ''}
+          </div>
+          <div class="mt-2 text-lg font-semibold">{p.data.title}</div>
+          {p.data.excerpt ? <div class="mt-2 text-sm opacity-80">{p.data.excerpt}</div> : null}
+        </a>
+      ))}
+    </div>
+
+    {posts.length === 0 && <p class="mt-6 opacity-70">No posts in this category yet.</p>}
+  </main>
+</Layout>
