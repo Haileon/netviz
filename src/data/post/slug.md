@@ -6,7 +6,7 @@ Fill front matter:
 ---
 title: "..."
 publishDate: 2026-01-04
-draft: true
+draft: false
 excerpt: "..."
 category: "computer network"
 tags: ["physical layer"]
