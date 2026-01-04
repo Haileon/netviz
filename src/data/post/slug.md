@@ -16,6 +16,6 @@ hello,world!
 *****
 push:
 git add .
-git commit -m "Add post: first"
+git commit -m "Add post: <first>"
 git push
 *****
