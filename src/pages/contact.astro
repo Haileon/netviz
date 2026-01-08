@@ -1,79 +1,28 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 
-const metadata = {
-  title: 'Contact',
-};
+const metadata = { title: 'Contact' };
+const QQ = '123456789'; // TODO: change to your real QQ number
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+  <main class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="text-3xl font-bold">Contact</h1>
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+    <div class="mt-6 rounded-2xl border border-white/30 bg-white/40 p-6 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/40">
+      <div class="text-sm opacity-80">QQ</div>
+      <div class="mt-2 text-xl font-semibold">{QQ}</div>
 
-  <ContactUs
-    id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
+      <div class="mt-5 text-sm opacity-80">Scan QR:</div>
+      <img
+        src="/qq.png"
+        alt="QQ QR code"
+        class="mt-3 max-w-[240px] rounded-xl border border-white/30 dark:border-white/10"
+      />
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="We are here to help!"
-    items={[
-      {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
-      },
-    ]}
-  />
+      <p class="mt-4 text-sm opacity-70">
+        Tip: You can also save the QR image and scan it inside QQ.
+      </p>
+    </div>
+  </main>
 </Layout>
