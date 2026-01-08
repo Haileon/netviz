@@ -80,11 +80,13 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     
               <!-- popover (same as yours) -->
               <div
-                class="pointer-events-none absolute bottom-12 right-0 z-50 w-72 rounded-2xl border border-white/30 bg-white/70 p-4
-                       opacity-0 shadow-lg backdrop-blur-xl transition
-                       group-hover:pointer-events-auto group-hover:opacity-100
+                class="absolute bottom-11 right-0 z-50 w-72 rounded-2xl border border-white/30 bg-white/70 p-4 shadow-lg backdrop-blur-xl
+                       invisible opacity-0 translate-y-1 transition
+                       group-hover:visible group-hover:opacity-100 group-hover:translate-y-0
+                       group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0
                        dark:border-white/10 dark:bg-slate-900/70"
               >
+
                 <div class="text-sm font-semibold">{item.ariaLabel}</div>
                 {item.label && <div class="mt-2 text-sm opacity-80 break-all">{item.label}</div>}
     
@@ -121,12 +123,10 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           ))}
         </div>
       </div>
+      
     </div>
-
-
-    
         <!-- footnote -->
-        <div class="text-sm dark:text-muted mt-6">
+        <div class="text-sm dark:text-muted mt-6 pb-10">
           <Fragment set:html={footNote} />
         </div>
 

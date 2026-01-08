@@ -46,7 +46,7 @@ export const footerData = {
       {
         ariaLabel: 'QQ',
         icon: 'tabler:brand-qq',
-        label: 'QQ: 2188832247',
+        label: '2188832247',
         copyText: '2188832247',
         qrSrc: '/qq.png',
       },
