@@ -34,7 +34,7 @@ export const footerData = {
         ariaLabel: 'GitHub',
         icon: 'tabler:brand-github',
         href: 'https://github.com/Haileon',
-        label: 'github.com/Haileon',
+        label: "https://github.com/Haileon",
       },
       {
         ariaLabel: 'Email',
@@ -46,6 +46,7 @@ export const footerData = {
       {
         ariaLabel: 'QQ',
         icon: 'tabler:brand-qq',
+        href: "https://wpa.qq.com/msgrd?v=3&uin=12345678&site=qq&menu=yes",
         label: '2188832247',
         copyText: '2188832247',
         qrSrc: '/qq.png',
