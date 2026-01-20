@@ -31,3 +31,9 @@ tag:
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: "G-QQ7RLT57HJ"

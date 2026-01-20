@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import GlassBackdrop from '~/components/common/GlassBackdrop.astro';
+import GlassSurface from '~/components/common/GlassSurface.astro';
 
 const postsAll = await getCollection('post');
 
@@ -25,8 +27,8 @@ const slugFrom = (entry) => {
   const s = entry.slug ?? entry.id ?? '';
   return s.replace(/\\/g, '/').split('/').pop().replace(/\.(md|mdx)$/i, '');
 };
----
 
+---
 <section class="relative">
   <!-- Glass background blobs -->
   <div class="pointer-events-none absolute inset-0 overflow-hidden">
