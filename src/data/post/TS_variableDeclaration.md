@@ -1,3 +1,12 @@
+---
+title: "TS"
+publishDate: 2026-01-22
+draft: false
+excerpt: "..."
+category: "Web"
+tags: ["TS"]
+metadata: {}
+---
 # 变量声明
 
 ## 1. `let` / `const` / `var` 的区别
