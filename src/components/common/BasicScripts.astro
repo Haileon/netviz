@@ -1,8 +1,10 @@
+<!--把网站的“基础交互逻辑”集中在一个地方，全部用内联脚本实现-->
 ---
 import { UI } from 'astrowind:config';
 ---
 
 <script is:inline define:vars={{ defaultTheme: UI.theme }}>
+  #全局锁，防止这个脚本在多次加载/切换页面时重复绑定事件
   if (window.basic_script) {
     return;
   }
@@ -16,7 +18,7 @@ import { UI } from 'astrowind:config';
       document.documentElement.classList.remove('dark');
     }
   }
-
+  #applyTheme + initTheme：决定最终主题
   const initTheme = function () {
     if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
       applyTheme(defaultTheme.replace(':only', ''));
@@ -30,7 +32,8 @@ import { UI } from 'astrowind:config';
     }
   };
   initTheme();
-
+  
+  #通用的事件绑定工具
   function attachEvent(selector, event, fn) {
     const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
     if (matches && matches.length) {
