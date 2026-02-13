@@ -84,7 +84,7 @@ let user: { id: number; name: string } = { id: 1, name: "A" };
 
 ```ts
 let nums: number[] = [1, 2, 3];
-let nums2: Array<number> = [1, 2, 3]; #使用数组泛型，Array<元素类型>
+let nums2: Array<number> = [1, 2, 3]; // 使用数组泛型，Array<元素类型>
 ```
 
 ## 9. Tuple（元组）
