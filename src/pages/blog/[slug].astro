@@ -6,7 +6,11 @@ export async function getStaticPaths() {
 
   const slugFrom = (entry) => {
     const s = entry.slug ?? entry.id ?? '';
-    return s.replace(/\\/g, '/').split('/').pop().replace(/\.(md|mdx)$/i, '');
+    return s
+      .replace(/\\/g, '/')
+      .split('/')
+      .pop()
+      .replace(/\.(md|mdx)$/i, '');
   };
 
   return posts

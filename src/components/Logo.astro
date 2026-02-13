@@ -5,18 +5,13 @@ const { showIcon = true, showName = true } = Astro.props;
 ---
 
 <span class="flex items-center">
-  {showIcon && (
-    <img
-      src="/cat.gif"
-      alt="Logo"
-      class="h-7 w-7 md:h-6 md:w-6 rounded"
-      loading="eager"
-    />
-  )}
+  {showIcon && <img src="/cat.gif" alt="Logo" class="h-7 w-7 md:h-6 md:w-6 rounded" loading="eager" />}
 
-  {showName && (
-    <span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
-      {SITE?.name}
-    </span>
-  )}
+  {
+    showName && (
+      <span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
+        {SITE?.name}
+      </span>
+    )
+  }
 </span>

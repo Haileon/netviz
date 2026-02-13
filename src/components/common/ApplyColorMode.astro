@@ -1,14 +1,14 @@
-<!--
-   “页面加载时立即设置深色/浅色主题” 的内联脚本组件
-   根据：在 src/config.yaml 里配置的 ui.theme;浏览器本地存储 localStorage.theme;系统偏好 prefers-color-scheme
-   来决定给 <html> 加不加 dark class，并同步更新你页面上的主题切换开关状态
- -->
 ---
 import { UI } from 'astrowind:config';
 
 // TODO: This code is temporary
 ---
 
+<!--
+   “页面加载时立即设置深色/浅色主题” 的内联脚本组件
+   根据：在 src/config.yaml 里配置的 ui.theme;浏览器本地存储 localStorage.theme;系统偏好 prefers-color-scheme
+   来决定给 <html> 加不加 dark class，并同步更新你页面上的主题切换开关状态
+ -->
 <script is:inline define:vars={{ defaultTheme: UI.theme || 'system' }}>
   function applyTheme(theme) {
     if (theme === 'dark') {

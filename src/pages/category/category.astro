@@ -13,7 +13,11 @@ const { category } = Astro.params;
 
 const slugFrom = (entry) => {
   const s = entry.slug ?? entry.id ?? '';
-  return s.replace(/\\/g, '/').split('/').pop().replace(/\.(md|mdx)$/i, '');
+  return s
+    .replace(/\\/g, '/')
+    .split('/')
+    .pop()
+    .replace(/\.(md|mdx)$/i, '');
 };
 
 const posts = (await getCollection('post'))
@@ -34,18 +38,20 @@ const metadata = { title: `Category: ${category}` };
     <h1 class="mt-4 text-3xl font-bold">{category}</h1>
 
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {posts.map((p) => (
-        <a
-          class="rounded-2xl border border-white/30 bg-white/40 p-5 shadow-sm backdrop-blur-xl hover:bg-white/60 dark:border-white/10 dark:bg-slate-900/40 dark:hover:bg-slate-900/60"
-          href={`/blog/${slugFrom(p)}`}
-        >
-          <div class="text-xs opacity-70">
-            {p.data.publishDate ? new Date(p.data.publishDate).toISOString().slice(0, 10) : ''}
-          </div>
-          <div class="mt-2 text-lg font-semibold">{p.data.title}</div>
-          {p.data.excerpt ? <div class="mt-2 text-sm opacity-80">{p.data.excerpt}</div> : null}
-        </a>
-      ))}
+      {
+        posts.map((p) => (
+          <a
+            class="rounded-2xl border border-white/30 bg-white/40 p-5 shadow-sm backdrop-blur-xl hover:bg-white/60 dark:border-white/10 dark:bg-slate-900/40 dark:hover:bg-slate-900/60"
+            href={`/blog/${slugFrom(p)}`}
+          >
+            <div class="text-xs opacity-70">
+              {p.data.publishDate ? new Date(p.data.publishDate).toISOString().slice(0, 10) : ''}
+            </div>
+            <div class="mt-2 text-lg font-semibold">{p.data.title}</div>
+            {p.data.excerpt ? <div class="mt-2 text-sm opacity-80">{p.data.excerpt}</div> : null}
+          </a>
+        ))
+      }
     </div>
 
     {posts.length === 0 && <p class="mt-6 opacity-70">No posts in this category yet.</p>}

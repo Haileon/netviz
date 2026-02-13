@@ -25,10 +25,10 @@ const { metadata } = Astro.props;
   </slot>
   <main>
     <GlassBackdrop />
-    
-      <GlassSurface>
-        <slot />
-      </GlassSurface>
+
+    <GlassSurface>
+      <slot />
+    </GlassSurface>
   </main>
   <slot name="footer">
     <Footer {...footerData} />

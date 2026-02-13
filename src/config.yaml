@@ -7,10 +7,9 @@ metadata:
   title:
     default: QYep
     template: '%s — QYep'
-  description: "My devlog: project progress, problems, and solutions."
+  description: 'My devlog: project progress, problems, and solutions.'
 
 googleSiteVerificationId: null
-
 
 i18n:
   language: en
@@ -26,14 +25,10 @@ tag:
   robots:
     index: false
 
-
-
-
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
-
 
 analytics:
   vendors:
     googleAnalytics:
-      id: "G-QQ7RLT57HJ"
+      id: 'G-QQ7RLT57HJ'

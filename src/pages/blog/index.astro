@@ -3,7 +3,11 @@ import { getCollection } from 'astro:content';
 
 const toSlug = (entry) => {
   const s = entry.slug ?? entry.id ?? '';
-  return s.replace(/\\/g, '/').split('/').pop().replace(/\.(md|mdx)$/i, '');
+  return s
+    .replace(/\\/g, '/')
+    .split('/')
+    .pop()
+    .replace(/\.(md|mdx)$/i, '');
 };
 
 const posts = (await getCollection('post'))
@@ -19,11 +23,15 @@ const posts = (await getCollection('post'))
   <h1 class="text-3xl font-bold">Blog</h1>
 
   <ul class="mt-6 space-y-4">
-    {posts.map((post) => (
-      <li>
-        <a class="underline" href={`/blog/${toSlug(post)}`}>{post.data.title}</a>
-        {post.data.excerpt && <div class="text-sm opacity-70">{post.data.excerpt}</div>}
-      </li>
-    ))}
+    {
+      posts.map((post) => (
+        <li>
+          <a class="underline" href={`/blog/${toSlug(post)}`}>
+            {post.data.title}
+          </a>
+          {post.data.excerpt && <div class="text-sm opacity-70">{post.data.excerpt}</div>}
+        </li>
+      ))
+    }
   </ul>
 </main>

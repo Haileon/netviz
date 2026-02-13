@@ -22,8 +22,7 @@
 
 @layer components {
   .btn {
-    @apply 
-    inline-flex items-center justify-center 
+    @apply inline-flex items-center justify-center 
     rounded-full 
     border-gray-400 border 
     bg-transparent 

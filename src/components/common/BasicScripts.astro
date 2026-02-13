@@ -1,8 +1,8 @@
-<!--把网站的“基础交互逻辑”集中在一个地方，全部用内联脚本实现-->
 ---
 import { UI } from 'astrowind:config';
 ---
 
+<!--把网站的“基础交互逻辑”集中在一个地方，全部用内联脚本实现-->
 <script is:inline define:vars={{ defaultTheme: UI.theme }}>
   //全局锁，防止这个脚本在多次加载/切换页面时重复绑定事件
   if (window.basic_script) {
@@ -32,7 +32,7 @@ import { UI } from 'astrowind:config';
     }
   };
   initTheme();
-  
+
   //通用的事件绑定工具
   function attachEvent(selector, event, fn) {
     const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;

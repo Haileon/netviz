@@ -1,21 +1,22 @@
 ---
-title: "TS"
+title: 'TS'
 publishDate: 2026-01-22
 draft: false
-excerpt: "..."
-category: "Web"
-tags: ["TS"]
+excerpt: '...'
+category: 'Web'
+tags: ['TS']
 metadata: {}
 ---
+
 # 变量声明
 
 ## 1. `let` / `const` / `var` 的区别
 
 ### 1.1 `let`
 
-* **块级作用域**（`{}` 内生效）
-* **可重新赋值**
-* 存在“暂时性死区（TDZ）”：声明前使用会报错
+- **块级作用域**（`{}` 内生效）
+- **可重新赋值**
+- 存在“暂时性死区（TDZ）”：声明前使用会报错
 
 ```ts
 let a = 1;
@@ -28,9 +29,9 @@ if (true) {
 
 ### 1.2 `const`
 
-* **块级作用域**
-* **必须初始化**
-* **不可重新赋值**，是对 let 的一个增强（但对象/数组内部内容可以改）
+- **块级作用域**
+- **必须初始化**
+- **不可重新赋值**，是对 let 的一个增强（但对象/数组内部内容可以改）
 
 ```ts
 const x = 1;
@@ -42,34 +43,36 @@ obj.n = 2; // OK（改的是属性，不是重新赋值）
 
 ### 1.3 `var`（不推荐）
 
-* **函数作用域**（没有块级作用域）
--- var声明可以在包含它的函数，模块，命名空间或全局作用域内部任何位置被访问，包含它的代码块对此没有什么影响。
+- **函数作用域**（没有块级作用域）
+  -- var声明可以在包含它的函数，模块，命名空间或全局作用域内部任何位置被访问，包含它的代码块对此没有什么影响。
+
 ```ts
 function f(shouldInitialize: boolean) {
-    if (shouldInitialize) {
-        var x = 10;
-    }
+  if (shouldInitialize) {
+    var x = 10;
+  }
 
-    return x;
+  return x;
 }
 
-f(true);  // returns '10'
+f(true); // returns '10'
 f(false); // returns 'undefined'
 ```
-* **允许重复声明**
-* 会“变量提升”，容易写出隐蔽 bug
+
+- **允许重复声明**
+- 会“变量提升”，容易写出隐蔽 bug
 
 ```ts
 function sumMatrix(matrix: number[][]) {
-    var sum = 0;
-    for (var i = 0; i < matrix.length; i++) {
-        var currentRow = matrix[i];
-        for (var i = 0; i < currentRow.length; i++) {
-            sum += currentRow[i];
-        }
+  var sum = 0;
+  for (var i = 0; i < matrix.length; i++) {
+    var currentRow = matrix[i];
+    for (var i = 0; i < currentRow.length; i++) {
+      sum += currentRow[i];
     }
+  }
 
-    return sum;
+  return sum;
 }
 ```
 
@@ -82,15 +85,15 @@ function sumMatrix(matrix: number[][]) {
 ### 2.1 类型推断（推荐常用）
 
 ```ts
-let n = 123;      // number
-const s = "hi";   // "hi"（字面量类型，const 更“窄”）
+let n = 123; // number
+const s = 'hi'; // "hi"（字面量类型，const 更“窄”）
 ```
 
 ### 2.2 显式类型标注
 
 ```ts
 let n: number = 123;
-let s: string = "hi";
+let s: string = 'hi';
 ```
 
 ---
@@ -125,7 +128,7 @@ const [x, y] = arr; // x: 10, y: 20
 ### 4.2 对象解构
 
 ```ts
-const user = { id: 1, name: "A" };
+const user = { id: 1, name: 'A' };
 const { id, name } = user; // id: number, name: string
 ```
 
@@ -140,7 +143,7 @@ const { id: userId } = user; // userId: number
 给“解构出的变量”标注类型，通常写在整体结构上：
 
 ```ts
-const { id, name }: { id: number; name: string } = { id: 1, name: "A" };
+const { id, name }: { id: number; name: string } = { id: 1, name: 'A' };
 ```
 
 ---
@@ -148,7 +151,7 @@ const { id, name }: { id: number; name: string } = { id: 1, name: "A" };
 ## 5. 默认值（Default values）
 
 ```ts
-function greet(name = "guest") {
+function greet(name = 'guest') {
   // name: string（默认值会影响推断）
   return `hi ${name}`;
 }
@@ -157,7 +160,7 @@ function greet(name = "guest") {
 解构默认值：
 
 ```ts
-const { role = "user" } = { role: undefined as string | undefined };
+const { role = 'user' } = { role: undefined as string | undefined };
 // role: string
 ```
 
@@ -168,10 +171,10 @@ const { role = "user" } = { role: undefined as string | undefined };
 默认情况下对象属性会被推成更宽的类型（例如 `"dev"` 会变成 `string`），`as const` 会让它变成只读并保留字面量类型。
 
 ```ts
-const cfg1 = { mode: "dev" };
+const cfg1 = { mode: 'dev' };
 // cfg1.mode: string
 
-const cfg2 = { mode: "dev" } as const;
+const cfg2 = { mode: 'dev' } as const;
 // cfg2.mode: "dev"
 ```
 
