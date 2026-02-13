@@ -33,7 +33,7 @@ const {
           ...((classes?.headline as object) ?? {}),
         }}
       />
-      <Timeline items={items} classes={classes?.items as Record} />
+      <Timeline items={items} classes={classes?.items as Record<string, string>} />
     </div>
     {
       image && (
